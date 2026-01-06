@@ -18,6 +18,20 @@ export const metadata: Metadata = {
     siteName: 'May Cake',
     locale: 'he_IL',
     type: 'website',
+    images: [
+      {
+        url: 'https://may-cake.vercel.app/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'May Cake - עוגות מעוצבות',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'May Cake - עוגות מעוצבות וסדנאות אפייה',
+    description: 'בואו להכיר את העולם המתוק של מאי בן הרוש. הזמנת עוגות ורכישת סדנאות.',
+    images: ['https://may-cake.vercel.app/og-image.webp'],
   },
   icons: {
     icon: [
