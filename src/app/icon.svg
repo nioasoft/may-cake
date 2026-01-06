@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Circular Background -->
+  <circle cx="256" cy="256" r="240" fill="#FFF0F5"/>
+  
+  <!-- Cake Base -->
+  <path d="M128 256h256v128c0 17.6-14.4 32-32 32H160c-17.6 0-32-14.4-32-32V256z" fill="#FFB6C1"/>
+  
+  <!-- Cake Top / Frosting -->
+  <path d="M128 256c0-35.3 28.7-64 64-64 15.6 0 29.8 5.6 40.8 14.9C240.1 199.3 247.6 192 256 192s15.9 7.3 23.2 14.9c11-9.3 25.2-14.9 40.8-14.9 35.3 0 64 28.7 64 64H128z" fill="#FFC0CB"/>
+  
+  <!-- Cherry/Decoration -->
+  <circle cx="256" cy="192" r="24" fill="#D4AF37"/>
+  
+  <!-- Candle line -->
+  <rect x="252" y="140" width="8" height="52" fill="#D4AF37"/>
+  
+  <!-- Flame -->
+  <path d="M256 110c0 0 10 10 10 20s-4.5 20-10 20-10-10-10-20 10-20 10-20z" fill="#FFA500"/>
+</svg>
