@@ -33,6 +33,14 @@ export default function Navbar() {
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
+                {/* Mobile Menu Button - Moved to start for Right alignment in RTL */}
+                <button
+                    className="md:hidden p-2 text-[var(--foreground)]"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
@@ -49,14 +57,6 @@ export default function Navbar() {
                 <Link href="/" className="text-2xl font-bold tracking-wider text-[var(--foreground)]">
                     May Cake
                 </Link>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden p-2 text-[var(--foreground)]"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
             </div>
 
             {/* Mobile Menu Overlay */}
