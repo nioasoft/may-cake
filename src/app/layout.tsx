@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import { Assistant, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
   variable: "--font-assistant",
+});
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-dancing",
 });
 
 export const metadata: Metadata = {
@@ -51,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <body
-        className={`${assistant.variable} antialiased bg-[#FFF0F5] text-gray-800`}
+        className={`${assistant.variable} ${dancingScript.variable} antialiased bg-[#FFF0F5] text-gray-800`}
       >
         {children}
       </body>

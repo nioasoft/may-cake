@@ -25,7 +25,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h1 className="text-5xl md:text-7xl font-bold text-[var(--foreground)] mb-4 drop-shadow-sm">
+                    <h1 className="text-5xl md:text-8xl font-bold text-[var(--foreground)] mb-6 drop-shadow-sm font-dancing">
                         May Ben Harush
                     </h1>
                     <h2 className="text-2xl md:text-3xl font-light text-[var(--foreground)] mb-8 tracking-wide">
@@ -39,7 +39,7 @@ export default function Hero() {
                             </Button>
                         </Link>
                         <Link href="#workshop">
-                            <Button variant="outline" size="lg" className="bg-white/80 hover:bg-white shadow-lg border-none hover:scale-105 transition-transform">
+                            <Button variant="outline" size="lg" className="bg-white/80 hover:bg-white text-gray-800 hover:text-gray-900 shadow-lg border-none hover:scale-105 transition-transform">
                                 לסדנאות
                             </Button>
                         </Link>

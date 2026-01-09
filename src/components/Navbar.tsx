@@ -54,7 +54,7 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                <Link href="/" className="text-2xl font-bold tracking-wider text-[var(--foreground)]">
+                <Link href="/" className="text-3xl font-bold tracking-wider text-[var(--foreground)] font-dancing">
                     May Cake
                 </Link>
             </div>

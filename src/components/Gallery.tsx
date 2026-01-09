@@ -20,7 +20,8 @@ const CATEGORY_LABELS: Record<string, string> = {
     'קוטר 14': 'קוטר 14',
     'קוטר 16': 'קוטר 16',
     'קוטר 20': 'קוטר 20',
-    'מאי קייק כללי': 'אווירה', // Optional to include or exclude
+    'מאי קייק כללי': 'אווירה',
+    'שולחנות קינוחים': 'שולחנות קינוחים',
 };
 
 export default function Gallery({ manifest }: GalleryProps) {
