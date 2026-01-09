@@ -13,9 +13,10 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://may-cake.vercel.app'),
   title: "May Cake - עוגות מעוצבות וסדנאות אפייה | מאי בן הרוש",
   description: "האתר הרשמי של מאי בן הרוש. עוגות מעוצבות, עוגיות אמסטרדם, מארזים מתוקים וסדנאות אפייה דיגיטליות.",
-  keywords: ["עוגות מעוצבות", "קונדיטורית", "מאי בן הרוש", "סדנאות אפייה", "עוגיות אמסטרדם", "מגולגלות קינדר", "עוגות מוס", "בנטו", "עוגות מספרים"],
+  keywords: ["עוגות מעוצבות", "קונדיטורית", "מאי בן הרוש", "סדנאות אפייה", "עוגיות אמסטרדם", "מגולגלות קינדר", "עוגות מוס", "בנטו", "עוגות מספרים", "שולחנות קינוחים", "סדנאות זילוף", "עוגות יום הולדת", "מארזים מתוקים"],
   openGraph: {
     title: "May Cake - עוגות מעוצבות וסדנאות אפייה",
     description: "בואו להכיר את העולם המתוק של מאי בן הרוש. הזמנת עוגות ורכישת סדנאות.",
@@ -38,14 +39,6 @@ export const metadata: Metadata = {
     description: 'בואו להכיר את העולם המתוק של מאי בן הרוש. הזמנת עוגות ורכישת סדנאות.',
     images: ['https://may-cake.vercel.app/og-image.webp'],
   },
-  icons: {
-    icon: [
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.png', // Apple touch icon usually likes PNGs
-  },
 };
 
 export default function RootLayout({
@@ -58,6 +51,30 @@ export default function RootLayout({
       <body
         className={`${assistant.variable} ${dancingScript.variable} antialiased bg-[#FFF0F5] text-gray-800`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Bakery",
+              "name": "May Cake - מאי בן הרוש",
+              "image": "https://may-cake.vercel.app/og-image.webp",
+              "description": "האתר הרשמי של מאי בן הרוש. עוגות מעוצבות, עוגיות אמסטרדם, מארזים מתוקים וסדנאות אפייה דיגיטליות.",
+              "url": "https://may-cake.vercel.app",
+              "telephone": "+972500000000", // Replace with real number if available or user provides it
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Israel",
+                "addressCountry": "IL"
+              },
+              "priceRange": "$$",
+              "author": {
+                "@type": "Person",
+                "name": "May Ben Harush"
+              }
+            })
+          }}
+        />
         {children}
       </body>
     </html>
