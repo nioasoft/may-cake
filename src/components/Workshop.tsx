@@ -58,7 +58,7 @@ export default function Workshop() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     {/* Using one of the "Pack" or "General" images as placeholder for workshop */}
-                    <div className="absolute inset-0 bg-[url('/images/מאי%20קייק%20כללי/5d234727-21f7-48b8-b5aa-79a9ab01a735.JPG.webp')] bg-cover bg-center"></div>
+                    <div className="absolute inset-0 bg-[url('/images/מאי%20קייק%20כללי/5d234727-21f7-48b8-b5aa-79a9ab01a735.JPG.webp')] bg-cover bg-top"></div>
                 </motion.div>
             </div>
         </section>

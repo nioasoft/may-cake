@@ -28,7 +28,7 @@ export default function Hero() {
                     <h1 className="text-5xl md:text-8xl font-bold text-[var(--foreground)] mb-6 drop-shadow-sm font-dancing">
                         May Ben Harush
                     </h1>
-                    <h2 className="text-2xl md:text-3xl font-light text-[var(--foreground)] mb-8 tracking-wide">
+                    <h2 className="text-lg md:text-3xl font-light text-[var(--foreground)] mb-8 tracking-wide whitespace-nowrap">
                         קונדיטורית | עוגות מעוצבות | סדנאות אפייה
                     </h2>
 
