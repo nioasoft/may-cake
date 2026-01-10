@@ -39,9 +39,14 @@ const filterImagesByPattern = (images: string[], pattern: string[]): string[] =>
 const createVirtualCategories = (manifest: Record<string, string[]>): Record<string, string[]> => {
     const virtual: Record<string, string[]> = {};
     
-    // קוטר 14 נמוך - filter images containing "נמוך" or "נמוכה"
+    // קוטר 14 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 14']) {
-        virtual['קוטר 14 נמוך'] = filterImagesByPattern(manifest['קוטר 14'], ['נמוך', 'נמוכה']);
+        const lowImages = filterImagesByPattern(manifest['קוטר 14'], ['נמוך', 'נמוכה']);
+        // Add specific images that should appear in נמוך category
+        const specificLowImages = manifest['קוטר 14'].filter(img => 
+            img.includes('WhatsApp Image 2026-01-05 at 22.46.01')
+        );
+        virtual['קוטר 14 נמוך'] = [...lowImages, ...specificLowImages];
     }
     
     // קוטר 14 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
@@ -52,29 +57,69 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
             img.includes('1c5a6238-c293-4976-860e-ca255010a590') || 
             img.includes('2bcce2d9-9c29-410e-a7dc-1753936cfe09') ||
             img.includes('5a343e01-26d3-47ef-b987-bb7ad9224fc5') ||
-            img.includes('5ba5e0a9-17bf-4921-bb14-45117e2260eb')
+            img.includes('5ba5e0a9-17bf-4921-bb14-45117e2260eb') ||
+            img.includes('61570eb7-ca8d-419e-b175-d29a99b6c815') ||
+            img.includes('8fc9a160-1e05-4fb4-b4f7-764d8dc3ff1b') ||
+            img.includes('97753073-5d3a-4fce-9251-cf1d50b1f119') ||
+            img.includes('ac310840-dd67-4c83-91ce-2f967c098507') ||
+            img.includes('b6e98a5c-fdbe-4b9c-b5c0-d335f3b80a29') ||
+            img.includes('c29cfaef-472b-4762-bdb3-75d3f2343936') ||
+            img.includes('c5cce317-422e-4f92-83c0-2af2d10eadf8') ||
+            img.includes('dba38229-097b-4f04-89cb-e430d1197467') ||
+            img.includes('dd7311ef-7e12-40ce-ba3a-5d518a490dad') ||
+            img.includes('f64468a8-35a5-425c-a49a-1bbcdff87b13')
         );
         virtual['קוטר 14 גבוה'] = [...highImages, ...specificHighImages];
     }
     
     // קוטר 16 נמוך - if there are low images (currently only high exists)
     if (manifest['קוטר 16']) {
-        virtual['קוטר 16 נמוך'] = filterImagesByPattern(manifest['קוטר 16'], ['נמוך', 'נמוכה']);
+        const lowImages = filterImagesByPattern(manifest['קוטר 16'], ['נמוך', 'נמוכה']);
+        // Add specific images that should appear in נמוך category
+        const specificLowImages = manifest['קוטר 16'].filter(img => 
+            img.includes('1064dff9-63c6-4fb3-a64f-c4b7d885e443')
+        );
+        virtual['קוטר 16 נמוך'] = [...lowImages, ...specificLowImages];
     }
     
-    // קוטר 16 גבוה - filter images containing "גבוה" or "גבוהה"
+    // קוטר 16 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 16']) {
-        virtual['קוטר 16 גבוה'] = filterImagesByPattern(manifest['קוטר 16'], ['גבוה', 'גבוהה']);
+        const highImages = filterImagesByPattern(manifest['קוטר 16'], ['גבוה', 'גבוהה']);
+        // Add specific images that should appear in גבוה category
+        const specificHighImages = manifest['קוטר 16'].filter(img => 
+            img.includes('2085f2bc-9de7-4d8e-bc15-ce9ecfc82d9f') ||
+            img.includes('3e9fa625-709b-4372-8fef-f3e5bf3f908c') ||
+            img.includes('6f48bade-57ea-49ae-bde6-f49ed4df3b0b') ||
+            img.includes('73960505-a54c-4b8f-bd56-88b86f2f00c0') ||
+            img.includes('f188558e-d869-4210-a5d9-23ed1b61e854') ||
+            img.includes('ffae7bca-f778-4f69-93ea-bea6b3b55132') ||
+            img.includes('WhatsApp Image 2026-01-05 at 22.46.08')
+        );
+        virtual['קוטר 16 גבוה'] = [...highImages, ...specificHighImages];
     }
     
-    // קוטר 20 נמוך - filter images containing "נמוך" or "נמוכה"
+    // קוטר 20 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 20']) {
-        virtual['קוטר 20 נמוך'] = filterImagesByPattern(manifest['קוטר 20'], ['נמוך', 'נמוכה']);
+        const lowImages = filterImagesByPattern(manifest['קוטר 20'], ['נמוך', 'נמוכה']);
+        // Add specific images that should appear in נמוך category
+        const specificLowImages = manifest['קוטר 20'].filter(img => 
+            img.includes('WhatsApp Image 2026-01-05 at 22.46.00')
+        );
+        virtual['קוטר 20 נמוך'] = [...lowImages, ...specificLowImages];
     }
     
-    // קוטר 20 גבוה - filter images containing "גבוה" or "גבוהה"
+    // קוטר 20 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 20']) {
-        virtual['קוטר 20 גבוה'] = filterImagesByPattern(manifest['קוטר 20'], ['גבוה', 'גבוהה']);
+        const highImages = filterImagesByPattern(manifest['קוטר 20'], ['גבוה', 'גבוהה']);
+        // Add specific images that should appear in גבוה category
+        const specificHighImages = manifest['קוטר 20'].filter(img => 
+            img.includes('20 גבוהה') ||
+            img.includes('מוס קוטר 20 לב') ||
+            img.includes('מוס קוטר 20 שוקולדים') ||
+            img.includes('עוגה קוטר 20 גבוהה') ||
+            img.includes('קוטר 20 - 2')
+        );
+        virtual['קוטר 20 גבוה'] = [...highImages, ...specificHighImages];
     }
     
     return virtual;
@@ -107,18 +152,39 @@ export default function Gallery({ manifest }: GalleryProps) {
     // Merge manifest with virtual categories
     const extendedManifest = { ...manifest, ...virtualCategories };
     
-    // Get all categories that exist in manifest or virtual categories
+    // Ensure all categories from CATEGORY_LABELS exist in extendedManifest (even if empty)
+    Object.keys(CATEGORY_LABELS).forEach(cat => {
+        if (!extendedManifest[cat]) {
+            extendedManifest[cat] = [];
+        }
+    });
+    
+    // Get all categories that exist in manifest or virtual categories and have a label
     const allCategories = Object.keys(extendedManifest).filter(cat => {
-        // Check if category has label and has images
-        return CATEGORY_LABELS[cat] && extendedManifest[cat] && extendedManifest[cat].length > 0;
+        // Check if category has label and exists (can be empty)
+        return CATEGORY_LABELS[cat] && extendedManifest[cat] !== undefined;
     });
     
     // Sort categories according to CATEGORY_ORDER
     const categories = CATEGORY_ORDER.filter(cat => allCategories.includes(cat));
     const [activeCategory, setActiveCategory] = useState<string>(categories[0] || '');
 
+    // Get all images from all base categories (excluding virtual categories to avoid duplicates)
+    const getAllImages = (): string[] => {
+        const allImages: string[] = [];
+        // Get all images from original manifest (not virtual categories)
+        Object.keys(manifest).forEach(cat => {
+            if (manifest[cat] && manifest[cat].length > 0) {
+                allImages.push(...manifest[cat]);
+            }
+        });
+        return allImages;
+    };
+
     // Flatten images for current category
-    const images = activeCategory ? extendedManifest[activeCategory] || [] : [];
+    const images = activeCategory === 'הכל' 
+        ? getAllImages() 
+        : (activeCategory ? extendedManifest[activeCategory] || [] : []);
 
     return (
         <section id="gallery" className="py-20 bg-white">
@@ -141,6 +207,14 @@ export default function Gallery({ manifest }: GalleryProps) {
                             {CATEGORY_LABELS[cat]}
                         </Button>
                     ))}
+                    <Button
+                        variant={activeCategory === 'הכל' ? 'primary' : 'outline'}
+                        onClick={() => setActiveCategory('הכל')}
+                        className="rounded-full px-6"
+                        size="sm"
+                    >
+                        הכל
+                    </Button>
                 </div>
 
                 {/* Image Grid */}
@@ -161,7 +235,7 @@ export default function Gallery({ manifest }: GalleryProps) {
                             >
                                 <Image
                                     src={src}
-                                    alt={CATEGORY_LABELS[activeCategory] || 'Cake'}
+                                    alt={activeCategory === 'הכל' ? 'תמונה מהגלריה' : (CATEGORY_LABELS[activeCategory] || 'Cake')}
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
