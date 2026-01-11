@@ -27,6 +27,7 @@ const CATEGORY_LABELS: Record<string, string> = {
     'עוגיות ועוגות לסופש וחגים': 'עוגיות ועוגות לסופש וחגים',
     'זרי פרחים אכילים': 'זרי פרחים אכילים',
     'סדנאות אפיה ליום הולדת או כל חגיגה': 'סדנאות אפיה ליום הולדת או כל חגיגה',
+    'סדנאות': 'סדנאות',
     'שולחנות קינוחים': 'שולחנות קינוחים',
     'מאי קייק כללי': 'צילומי תדמית',
 };
@@ -39,26 +40,26 @@ const filterImagesByPattern = (images: string[], pattern: string[]): string[] =>
 // Create virtual categories by filtering images from base folders
 const createVirtualCategories = (manifest: Record<string, string[]>): Record<string, string[]> => {
     const virtual: Record<string, string[]> = {};
-    
+
     // קוטר 14 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 14']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 14'], ['נמוך', 'נמוכה']);
         const lowImagesSet = new Set(lowImages);
         // Add specific images that should appear in נמוך category (only if not already included)
-        const specificLowImages = manifest['קוטר 14'].filter(img => 
+        const specificLowImages = manifest['קוטר 14'].filter(img =>
             !lowImagesSet.has(img) && img.includes('WhatsApp Image 2026-01-05 at 22.46.01')
         );
         virtual['קוטר 14 נמוך'] = [...lowImages, ...specificLowImages];
     }
-    
+
     // קוטר 14 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 14']) {
         const highImages = filterImagesByPattern(manifest['קוטר 14'], ['גבוה', 'גבוהה']);
         const highImagesSet = new Set(highImages);
         // Add specific images that should appear in גבוה category (only if not already included)
-        const specificHighImages = manifest['קוטר 14'].filter(img => 
+        const specificHighImages = manifest['קוטר 14'].filter(img =>
             !highImagesSet.has(img) && (
-                img.includes('1c5a6238-c293-4976-860e-ca255010a590') || 
+                img.includes('1c5a6238-c293-4976-860e-ca255010a590') ||
                 img.includes('2bcce2d9-9c29-410e-a7dc-1753936cfe09') ||
                 img.includes('5a343e01-26d3-47ef-b987-bb7ad9224fc5') ||
                 img.includes('5ba5e0a9-17bf-4921-bb14-45117e2260eb') ||
@@ -76,24 +77,24 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
         );
         virtual['קוטר 14 גבוה'] = [...highImages, ...specificHighImages];
     }
-    
+
     // קוטר 16 נמוך - if there are low images (currently only high exists)
     if (manifest['קוטר 16']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 16'], ['נמוך', 'נמוכה']);
         const lowImagesSet = new Set(lowImages);
         // Add specific images that should appear in נמוך category (only if not already included)
-        const specificLowImages = manifest['קוטר 16'].filter(img => 
+        const specificLowImages = manifest['קוטר 16'].filter(img =>
             !lowImagesSet.has(img) && img.includes('1064dff9-63c6-4fb3-a64f-c4b7d885e443')
         );
         virtual['קוטר 16 נמוך'] = [...lowImages, ...specificLowImages];
     }
-    
+
     // קוטר 16 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 16']) {
         const highImages = filterImagesByPattern(manifest['קוטר 16'], ['גבוה', 'גבוהה']);
         const highImagesSet = new Set(highImages);
         // Add specific images that should appear in גבוה category (only if not already included)
-        const specificHighImages = manifest['קוטר 16'].filter(img => 
+        const specificHighImages = manifest['קוטר 16'].filter(img =>
             !highImagesSet.has(img) && (
                 img.includes('2085f2bc-9de7-4d8e-bc15-ce9ecfc82d9f') ||
                 img.includes('3e9fa625-709b-4372-8fef-f3e5bf3f908c') ||
@@ -106,24 +107,24 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
         );
         virtual['קוטר 16 גבוה'] = [...highImages, ...specificHighImages];
     }
-    
+
     // קוטר 20 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 20']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 20'], ['נמוך', 'נמוכה']);
         const lowImagesSet = new Set(lowImages);
         // Add specific images that should appear in נמוך category (only if not already included)
-        const specificLowImages = manifest['קוטר 20'].filter(img => 
+        const specificLowImages = manifest['קוטר 20'].filter(img =>
             !lowImagesSet.has(img) && img.includes('WhatsApp Image 2026-01-05 at 22.46.00')
         );
         virtual['קוטר 20 נמוך'] = [...lowImages, ...specificLowImages];
     }
-    
+
     // קוטר 20 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 20']) {
         const highImages = filterImagesByPattern(manifest['קוטר 20'], ['גבוה', 'גבוהה']);
         const highImagesSet = new Set(highImages);
         // Add specific images that should appear in גבוה category (only if not already included)
-        const specificHighImages = manifest['קוטר 20'].filter(img => 
+        const specificHighImages = manifest['קוטר 20'].filter(img =>
             !highImagesSet.has(img) && (
                 img.includes('20 גבוהה') ||
                 img.includes('מוס קוטר 20 לב') ||
@@ -134,7 +135,7 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
         );
         virtual['קוטר 20 גבוה'] = [...highImages, ...specificHighImages];
     }
-    
+
     return virtual;
 };
 
@@ -156,6 +157,7 @@ const CATEGORY_ORDER = [
     'עוגיות ועוגות לסופש וחגים',
     'זרי פרחים אכילים',
     'סדנאות אפיה ליום הולדת או כל חגיגה',
+    'סדנאות',
     'שולחנות קינוחים',
     'מאי קייק כללי',
 ];
@@ -165,14 +167,14 @@ export default function Gallery({ manifest }: GalleryProps) {
     const virtualCategories = createVirtualCategories(manifest);
     // Merge manifest with virtual categories
     const extendedManifest = { ...manifest, ...virtualCategories };
-    
+
     // Ensure all categories from CATEGORY_LABELS exist in extendedManifest (even if empty)
     Object.keys(CATEGORY_LABELS).forEach(cat => {
         if (!extendedManifest[cat]) {
             extendedManifest[cat] = [];
         }
     });
-    
+
     // Get all categories that exist in manifest or virtual categories and have a label
     // Exclude base categories that have virtual subcategories to avoid duplicates
     const excludedBaseCategories = ['קוטר 14', 'קוטר 16', 'קוטר 20'];
@@ -181,7 +183,7 @@ export default function Gallery({ manifest }: GalleryProps) {
         // Exclude base categories that have virtual subcategories
         return CATEGORY_LABELS[cat] && extendedManifest[cat] !== undefined && !excludedBaseCategories.includes(cat);
     });
-    
+
     // Sort categories according to CATEGORY_ORDER
     const categories = CATEGORY_ORDER.filter(cat => allCategories.includes(cat));
     const [activeCategory, setActiveCategory] = useState<string>(categories[0] || '');
@@ -205,8 +207,8 @@ export default function Gallery({ manifest }: GalleryProps) {
     };
 
     // Flatten images for current category
-    const images = activeCategory === 'הכל' 
-        ? getAllImages() 
+    const images = activeCategory === 'הכל'
+        ? getAllImages()
         : (activeCategory ? extendedManifest[activeCategory] || [] : []);
 
     return (
