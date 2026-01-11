@@ -20,6 +20,7 @@ const CATEGORY_LABELS: Record<string, string> = {
     'קוטר 20 נמוך': 'קוטר 20 נמוך',
     'קוטר 20 גבוה': 'קוטר 20 גבוה',
     'קוטר 22': 'קוטר 22',
+    'מארזים': 'מארזים',
     'עוגות מספרים': 'עוגת מספרים ואותיות בצק שקדים',
     'עוגות קומות': 'עוגות חתן כלה וקומות',
     'עוגת גן': 'עוגות גן',
@@ -42,9 +43,10 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 14 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 14']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 14'], ['נמוך', 'נמוכה']);
-        // Add specific images that should appear in נמוך category
+        const lowImagesSet = new Set(lowImages);
+        // Add specific images that should appear in נמוך category (only if not already included)
         const specificLowImages = manifest['קוטר 14'].filter(img => 
-            img.includes('WhatsApp Image 2026-01-05 at 22.46.01')
+            !lowImagesSet.has(img) && img.includes('WhatsApp Image 2026-01-05 at 22.46.01')
         );
         virtual['קוטר 14 נמוך'] = [...lowImages, ...specificLowImages];
     }
@@ -52,22 +54,25 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 14 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 14']) {
         const highImages = filterImagesByPattern(manifest['קוטר 14'], ['גבוה', 'גבוהה']);
-        // Add specific images that should appear in גבוה category
+        const highImagesSet = new Set(highImages);
+        // Add specific images that should appear in גבוה category (only if not already included)
         const specificHighImages = manifest['קוטר 14'].filter(img => 
-            img.includes('1c5a6238-c293-4976-860e-ca255010a590') || 
-            img.includes('2bcce2d9-9c29-410e-a7dc-1753936cfe09') ||
-            img.includes('5a343e01-26d3-47ef-b987-bb7ad9224fc5') ||
-            img.includes('5ba5e0a9-17bf-4921-bb14-45117e2260eb') ||
-            img.includes('61570eb7-ca8d-419e-b175-d29a99b6c815') ||
-            img.includes('8fc9a160-1e05-4fb4-b4f7-764d8dc3ff1b') ||
-            img.includes('97753073-5d3a-4fce-9251-cf1d50b1f119') ||
-            img.includes('ac310840-dd67-4c83-91ce-2f967c098507') ||
-            img.includes('b6e98a5c-fdbe-4b9c-b5c0-d335f3b80a29') ||
-            img.includes('c29cfaef-472b-4762-bdb3-75d3f2343936') ||
-            img.includes('c5cce317-422e-4f92-83c0-2af2d10eadf8') ||
-            img.includes('dba38229-097b-4f04-89cb-e430d1197467') ||
-            img.includes('dd7311ef-7e12-40ce-ba3a-5d518a490dad') ||
-            img.includes('f64468a8-35a5-425c-a49a-1bbcdff87b13')
+            !highImagesSet.has(img) && (
+                img.includes('1c5a6238-c293-4976-860e-ca255010a590') || 
+                img.includes('2bcce2d9-9c29-410e-a7dc-1753936cfe09') ||
+                img.includes('5a343e01-26d3-47ef-b987-bb7ad9224fc5') ||
+                img.includes('5ba5e0a9-17bf-4921-bb14-45117e2260eb') ||
+                img.includes('61570eb7-ca8d-419e-b175-d29a99b6c815') ||
+                img.includes('8fc9a160-1e05-4fb4-b4f7-764d8dc3ff1b') ||
+                img.includes('97753073-5d3a-4fce-9251-cf1d50b1f119') ||
+                img.includes('ac310840-dd67-4c83-91ce-2f967c098507') ||
+                img.includes('b6e98a5c-fdbe-4b9c-b5c0-d335f3b80a29') ||
+                img.includes('c29cfaef-472b-4762-bdb3-75d3f2343936') ||
+                img.includes('c5cce317-422e-4f92-83c0-2af2d10eadf8') ||
+                img.includes('dba38229-097b-4f04-89cb-e430d1197467') ||
+                img.includes('dd7311ef-7e12-40ce-ba3a-5d518a490dad') ||
+                img.includes('f64468a8-35a5-425c-a49a-1bbcdff87b13')
+            )
         );
         virtual['קוטר 14 גבוה'] = [...highImages, ...specificHighImages];
     }
@@ -75,9 +80,10 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 16 נמוך - if there are low images (currently only high exists)
     if (manifest['קוטר 16']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 16'], ['נמוך', 'נמוכה']);
-        // Add specific images that should appear in נמוך category
+        const lowImagesSet = new Set(lowImages);
+        // Add specific images that should appear in נמוך category (only if not already included)
         const specificLowImages = manifest['קוטר 16'].filter(img => 
-            img.includes('1064dff9-63c6-4fb3-a64f-c4b7d885e443')
+            !lowImagesSet.has(img) && img.includes('1064dff9-63c6-4fb3-a64f-c4b7d885e443')
         );
         virtual['קוטר 16 נמוך'] = [...lowImages, ...specificLowImages];
     }
@@ -85,15 +91,18 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 16 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 16']) {
         const highImages = filterImagesByPattern(manifest['קוטר 16'], ['גבוה', 'גבוהה']);
-        // Add specific images that should appear in גבוה category
+        const highImagesSet = new Set(highImages);
+        // Add specific images that should appear in גבוה category (only if not already included)
         const specificHighImages = manifest['קוטר 16'].filter(img => 
-            img.includes('2085f2bc-9de7-4d8e-bc15-ce9ecfc82d9f') ||
-            img.includes('3e9fa625-709b-4372-8fef-f3e5bf3f908c') ||
-            img.includes('6f48bade-57ea-49ae-bde6-f49ed4df3b0b') ||
-            img.includes('73960505-a54c-4b8f-bd56-88b86f2f00c0') ||
-            img.includes('f188558e-d869-4210-a5d9-23ed1b61e854') ||
-            img.includes('ffae7bca-f778-4f69-93ea-bea6b3b55132') ||
-            img.includes('WhatsApp Image 2026-01-05 at 22.46.08')
+            !highImagesSet.has(img) && (
+                img.includes('2085f2bc-9de7-4d8e-bc15-ce9ecfc82d9f') ||
+                img.includes('3e9fa625-709b-4372-8fef-f3e5bf3f908c') ||
+                img.includes('6f48bade-57ea-49ae-bde6-f49ed4df3b0b') ||
+                img.includes('73960505-a54c-4b8f-bd56-88b86f2f00c0') ||
+                img.includes('f188558e-d869-4210-a5d9-23ed1b61e854') ||
+                img.includes('ffae7bca-f778-4f69-93ea-bea6b3b55132') ||
+                img.includes('WhatsApp Image 2026-01-05 at 22.46.08')
+            )
         );
         virtual['קוטר 16 גבוה'] = [...highImages, ...specificHighImages];
     }
@@ -101,9 +110,10 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 20 נמוך - filter images containing "נמוך" or "נמוכה", plus specific images
     if (manifest['קוטר 20']) {
         const lowImages = filterImagesByPattern(manifest['קוטר 20'], ['נמוך', 'נמוכה']);
-        // Add specific images that should appear in נמוך category
+        const lowImagesSet = new Set(lowImages);
+        // Add specific images that should appear in נמוך category (only if not already included)
         const specificLowImages = manifest['קוטר 20'].filter(img => 
-            img.includes('WhatsApp Image 2026-01-05 at 22.46.00')
+            !lowImagesSet.has(img) && img.includes('WhatsApp Image 2026-01-05 at 22.46.00')
         );
         virtual['קוטר 20 נמוך'] = [...lowImages, ...specificLowImages];
     }
@@ -111,13 +121,16 @@ const createVirtualCategories = (manifest: Record<string, string[]>): Record<str
     // קוטר 20 גבוה - filter images containing "גבוה" or "גבוהה", plus specific images
     if (manifest['קוטר 20']) {
         const highImages = filterImagesByPattern(manifest['קוטר 20'], ['גבוה', 'גבוהה']);
-        // Add specific images that should appear in גבוה category
+        const highImagesSet = new Set(highImages);
+        // Add specific images that should appear in גבוה category (only if not already included)
         const specificHighImages = manifest['קוטר 20'].filter(img => 
-            img.includes('20 גבוהה') ||
-            img.includes('מוס קוטר 20 לב') ||
-            img.includes('מוס קוטר 20 שוקולדים') ||
-            img.includes('עוגה קוטר 20 גבוהה') ||
-            img.includes('קוטר 20 - 2')
+            !highImagesSet.has(img) && (
+                img.includes('20 גבוהה') ||
+                img.includes('מוס קוטר 20 לב') ||
+                img.includes('מוס קוטר 20 שוקולדים') ||
+                img.includes('עוגה קוטר 20 גבוהה') ||
+                img.includes('קוטר 20 - 2')
+            )
         );
         virtual['קוטר 20 גבוה'] = [...highImages, ...specificHighImages];
     }
@@ -136,6 +149,7 @@ const CATEGORY_ORDER = [
     'קוטר 20 נמוך',
     'קוטר 20 גבוה',
     'קוטר 22',
+    'מארזים',
     'עוגות מספרים',
     'עוגות קומות',
     'עוגת גן',
