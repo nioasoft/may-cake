@@ -160,9 +160,12 @@ export default function Gallery({ manifest }: GalleryProps) {
     });
     
     // Get all categories that exist in manifest or virtual categories and have a label
+    // Exclude base categories that have virtual subcategories to avoid duplicates
+    const excludedBaseCategories = ['קוטר 14', 'קוטר 16', 'קוטר 20'];
     const allCategories = Object.keys(extendedManifest).filter(cat => {
         // Check if category has label and exists (can be empty)
-        return CATEGORY_LABELS[cat] && extendedManifest[cat] !== undefined;
+        // Exclude base categories that have virtual subcategories
+        return CATEGORY_LABELS[cat] && extendedManifest[cat] !== undefined && !excludedBaseCategories.includes(cat);
     });
     
     // Sort categories according to CATEGORY_ORDER
@@ -172,10 +175,16 @@ export default function Gallery({ manifest }: GalleryProps) {
     // Get all images from all base categories (excluding virtual categories to avoid duplicates)
     const getAllImages = (): string[] => {
         const allImages: string[] = [];
+        const seenImages = new Set<string>();
         // Get all images from original manifest (not virtual categories)
         Object.keys(manifest).forEach(cat => {
             if (manifest[cat] && manifest[cat].length > 0) {
-                allImages.push(...manifest[cat]);
+                manifest[cat].forEach(img => {
+                    if (!seenImages.has(img)) {
+                        seenImages.add(img);
+                        allImages.push(img);
+                    }
+                });
             }
         });
         return allImages;
