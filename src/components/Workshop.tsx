@@ -51,7 +51,7 @@ export default function Workshop() {
 
                 {/* Image Placeholder - Could use a specific workshop image if known, otherwise generic sweet image */}
                 <motion.div
-                    className="flex-1 relative aspect-video w-full md:w-auto rounded-2xl overflow-hidden shadow-2xl skew-y-3 bg-white"
+                    className="flex-1 relative aspect-[3/4] w-full md:w-auto rounded-2xl overflow-hidden shadow-2xl skew-y-3 bg-white"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
